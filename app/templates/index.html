@@ -1,0 +1,20 @@
+<!-- app/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Digital Footprint Summary</title>
+    <!-- Link to favicon using url_for -->
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+    <h1>Digital Footprint Summary</h1>
+    <!-- Reference the image using url_for with cache-busting query parameter -->
+    <img src="{{ url_for('static', filename='footprint_collage.png') }}?v={{ cache_bust }}" alt="Footprint Collage">
+    <ul>
+        {% for category, count in traffic_data.items() %}
+            <li>{{ category }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
